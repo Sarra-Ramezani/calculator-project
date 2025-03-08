@@ -1,0 +1,99 @@
+h1,
+h2,
+h3,
+h4,
+p,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button {
+  border: none;
+}
+
+body {
+  background-color: rgba(241, 242, 243, 1);
+  font-family: "Work Sans", monospace;
+  font-weight: 300;
+}
+
+.status-bar {
+  height: 150px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: end;
+  padding: 16px;
+}
+
+#operation {
+  align-self: flex-end;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 40px;
+}
+
+#result {
+  text-align: end;
+  color: black;
+  font-size: 96px;
+  word-break: break-all;
+}
+
+#calc-btn-container {
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(4, 20%);
+  grid-template-rows: repeat(5, 15%);
+  width: 93%;
+  gap: 16px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.calc-btn {
+  background-color: white;
+  width: 100%;
+  min-width: 73px;
+  max-width: 108px;
+  min-height: 73px;
+  border-radius: 48px;
+  font: 400 32px "Work Sans";
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.green-btn {
+  background-color: rgba(64, 229, 190, 1);
+  color: white;
+}
+
+.gray-btn {
+  background-color: rgba(210, 211, 218, 1);
+}
+
+.equal-btn {
+  background-color: black;
+  color: white;
+}

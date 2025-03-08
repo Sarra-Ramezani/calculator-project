@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="status-bar"></header>
+    <main class="calculator">
+      <div id="operation">0</div>
+      <div id="result">0</div>
+      <div id="calc-btn-container">
+        <button class="calc-btn gray-btn" value="clear">C</button>
+        <button class="calc-btn gray-btn" value="negative">
+          <svg
+            width="25"
+            height="22"
+            viewBox="0 0 25 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M19.5821 2.55469L20.1367 1.72264L18.4726 0.613239L17.9179 1.44529L5.91795 19.4453L5.36325 20.2773L7.02735 21.3867L7.58205 20.5547L19.5821 2.55469ZM5.75 0.999989V1.99999V3.99999H7.75H8.75V5.99999H7.75H5.75V7.99999V8.99999H3.75V7.99999V5.99999H1.75H0.75V3.99999H1.75H3.75V1.99999V0.999989H5.75ZM17.75 16H16.75V18H17.75H23.75H24.75V16H23.75H17.75Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+        <button class="calc-btn gray-btn" value="%">%</button>
+        <button class="calc-btn green-btn" value="/">&#247;</button>
+        <button class="calc-btn" value="7">7</button>
+        <button class="calc-btn" value="8">8</button>
+        <button class="calc-btn" value="9">9</button>
+        <button class="calc-btn green-btn" value="*">&times;</button>
+        <button class="calc-btn" value="4">4</button>
+        <button class="calc-btn" value="5">5</button>
+        <button class="calc-btn" value="6">6</button>
+        <button class="calc-btn green-btn" value="-">-</button>
+        <button class="calc-btn" value="1">1</button>
+        <button class="calc-btn" value="2">2</button>
+        <button class="calc-btn" value="3">3</button>
+        <button class="calc-btn green-btn" value="+">+</button>
+        <button class="calc-btn" value="0">0</button>
+        <button class="calc-btn" value=".">.</button>
+        <button class="calc-btn" value="clear-all">
+          <svg
+            width="33"
+            height="32"
+            viewBox="0 0 33 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M11.0858 7H11.5H27.5H28.5V8V24V25H27.5H11.5H11.0858L10.7929 24.7071L2.79292 16.7071L2.08582 16L2.79292 15.2929L10.7929 7.29289L11.0858 7ZM11.9142 9L4.91424 16L11.9142 23H26.5V9H11.9142ZM15.5 11.5858L16.2071 12.2929L18.5 14.5858L20.7929 12.2929L21.5 11.5858L22.9142 13L22.2071 13.7071L19.9142 16L22.2071 18.2929L22.9142 19L21.5 20.4142L20.7929 19.7071L18.5 17.4142L16.2071 19.7071L15.5 20.4142L14.0858 19L14.7929 18.2929L17.0858 16L14.7929 13.7071L14.0858 13L15.5 11.5858Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+        <button class="calc-btn equal-btn" value="equals">=</button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
