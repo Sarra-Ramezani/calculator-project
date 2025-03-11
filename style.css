@@ -38,6 +38,12 @@ body {
   font-weight: 300;
 }
 
+:has(> svg) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .status-bar {
   height: 150px;
 }
