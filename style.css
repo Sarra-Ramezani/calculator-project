@@ -44,8 +44,24 @@ body {
   align-items: center;
 }
 
+#history-btn {
+  height: 40px;
+  width: 40px;
+  background-color: rgba(218, 218, 218, 1);
+  border-radius: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  margin-left: 9%;
+}
+
+#history-btn > img {
+  width: 60%;
+}
+
 .status-bar {
-  height: 150px;
+  height: 50px;
 }
 main {
   display: flex;

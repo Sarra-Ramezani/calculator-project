@@ -42,7 +42,7 @@ document
           result = decimalPlaces(result) < 5 ? result : result.toFixed(4);
         }
         //to continue the opertaion, we set result to currentOperation
-        currentOperation = result;
+        currentOperation = Number(result);
         displayPreviousOperation(currentOperation);
         displayResult(result);
       }
@@ -69,6 +69,7 @@ document
     } else if (btnValue === "negative") {
       lastOperand = getLastOperand(currentOperation);
       //replace the last operand with converted negative operand
+      console.log(lastOperand);
       currentOperation =
         currentOperation.substring(
           0,
@@ -98,10 +99,15 @@ function displayPreviousOperation(value) {
 }
 
 function getLastOperand(operation) {
-  //split string by anything that is not a digit, . or % and create an array of operands
-  const operandsArray = operation.split(/[^0-9.%]+/);
-  //return the last operand
-  return operandsArray[operandsArray.length - 1];
+  const regex = /[^0-9.%]+/;
+  if (regex.test(operation)) {
+    //split string by anything that is not a digit, . or % and create an array of operands
+    const operandsArray = operation.split(regex);
+    //return the last operand
+    return operandsArray[operandsArray.length - 1];
+  } else {
+    return operation;
+  }
 }
 
 function decimalPlaces(num) {
