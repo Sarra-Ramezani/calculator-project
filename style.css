@@ -53,22 +53,41 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 80px;
-  margin-left: 9%;
+  margin-left: 13%;
 }
 
 #history-btn > img {
   width: 60%;
 }
+#history-container {
+  position: relative;
+}
+#history {
+  padding: 13%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 600px;
+  transform: translateX(-100%);
+  top: 0;
+  left: 0;
+  transition: transform 0.5s ease-in-out;
+}
 
+#history.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#history > h2 {
+  font: 500 40px "Work Sans";
+}
+#history > p {
+  font: 400 40px "Work Sans";
+  color: rgba(0, 0, 0, 1);
+}
 .status-bar {
   height: 50px;
-}
-main {
-  display: flex;
-  flex-direction: column;
-  height: 600px;
-  justify-content: end;
-  padding: 16px;
 }
 
 #operation {
@@ -82,6 +101,15 @@ main {
   color: black;
   font-size: 96px;
   word-break: break-all;
+}
+.calculator {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: end;
+  padding: 16px;
 }
 
 #calc-btn-container {
@@ -103,8 +131,6 @@ main {
   min-height: 73px;
   border-radius: 48px;
   font: 400 32px "Work Sans";
-  font-size: 32px;
-  font-weight: 400;
 }
 
 .green-btn {

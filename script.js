@@ -4,6 +4,23 @@ let btnValue = 0; //stores target button value
 let currentOperation = ""; //stores the whole operation step by step
 let result = 0; // stores the result of current operation
 let lastOperand;
+const history = document.querySelector("#history");
+const calculator = document.querySelector(".calculator");
+const historyButton = document.querySelector("#history-btn");
+
+historyButton.addEventListener("click", () => {
+  if (history.classList.contains("show")) {
+    // hide history, show calculator
+    history.classList.remove("show");
+    calculator.style.opacity = "1";
+  } else {
+    // show history, hide calculator
+    history.style.display = "flex";
+    calculator.style.opacity = "0";
+    history.classList.add("show");
+  }
+});
+
 //1. listen for click on parent, instead of each button child
 //2. store value of the clicked button in btnValue
 document
