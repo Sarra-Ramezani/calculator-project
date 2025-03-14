@@ -61,6 +61,8 @@ body {
 }
 #history-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 #history {
   padding: 13%;
@@ -72,6 +74,8 @@ body {
   top: 0;
   left: 0;
   transition: transform 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
 }
 
 #history.show {
@@ -81,11 +85,17 @@ body {
 
 #history > h2 {
   font: 500 40px "Work Sans";
+  margin-bottom: 24px;
 }
-#history > p {
-  font: 400 40px "Work Sans";
-  color: rgba(0, 0, 0, 1);
+
+#previous-operations {
+  font: 300 40px "Work Sans";
+  color: rgba(0, 0, 0, 4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
 .status-bar {
   height: 50px;
 }
