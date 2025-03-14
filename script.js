@@ -21,6 +21,9 @@ historyButton.addEventListener("click", () => {
     calculator.style.opacity = "0";
     history.classList.add("show");
   }
+
+  displayOperationHistory(operationsList);
+  operationsList = [];
 });
 
 //1. listen for click on parent, instead of each button child
@@ -214,7 +217,11 @@ function checkZeroDivision(operation) {
 //get the whole operation each time and store it in a list and display the list
 function createOperationList(operation) {
   operationsList.push(operation);
-  operationsList.forEach((element) => {
+  return operationsList;
+}
+
+function displayOperationHistory(list) {
+  list.forEach((element) => {
     previousOperationsList.innerHTML += `${element} <br>`;
   });
 }
