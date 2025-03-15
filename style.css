@@ -59,6 +59,12 @@ body {
 #history-btn > img {
   width: 60%;
 }
+
+.rotating-icon {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease-in;
+}
+
 #history-container {
   position: relative;
   display: flex;
@@ -76,6 +82,7 @@ body {
   transition: transform 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 }
 
 #history.show {
@@ -94,6 +101,15 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+#clear-history-btn {
+  height: 40px;
+  width: 40px;
+  background-color: rgba(218, 218, 218, 1);
+  border-radius: 34px;
+  position: absolute;
+  bottom: 10%;
 }
 
 .status-bar {

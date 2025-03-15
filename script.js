@@ -9,21 +9,33 @@ const history = document.querySelector("#history");
 const calculator = document.querySelector(".calculator");
 const historyButton = document.querySelector("#history-btn");
 const previousOperationsList = document.querySelector("#previous-operations");
+const historyButtonIcon = document.querySelector("#history-btn > img");
+const clearHistoryBtn = document.querySelector("#clear-history-btn");
 
 historyButton.addEventListener("click", () => {
+  console.log(historyButtonIcon);
   if (history.classList.contains("show")) {
     // hide history, show calculator
     history.classList.remove("show");
     calculator.style.opacity = "1";
+    historyButtonIcon.classList.remove("rotating-icon");
   } else {
     // show history, hide calculator
     history.style.display = "flex";
     calculator.style.opacity = "0";
     history.classList.add("show");
+    historyButtonIcon.classList.add("rotating-icon");
   }
 
-  displayOperationHistory(operationsList);
+  displayOperationHistory();
   operationsList = [];
+});
+
+//clear local storage
+clearHistoryBtn.addEventListener("click", () => {
+  console.log(localStorage.key);
+  localStorage.clear();
+  previousOperationsList.innerHTML = "";
 });
 
 //1. listen for click on parent, instead of each button child
@@ -216,11 +228,15 @@ function checkZeroDivision(operation) {
 
 //get the whole operation each time and store it in a list and display the list
 function createOperationList(operation) {
+  operationsList = JSON.parse(localStorage.getItem("operation")) || [];
   operationsList.push(operation);
+  localStorage.setItem("operation", JSON.stringify(operationsList));
   return operationsList;
 }
 
-function displayOperationHistory(list) {
+function displayOperationHistory() {
+  previousOperationsList.innerHTML = "";
+  list = JSON.parse(localStorage.getItem("operation")) || [];
   list.forEach((element) => {
     previousOperationsList.innerHTML += `${element} <br>`;
   });
