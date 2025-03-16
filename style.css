@@ -129,6 +129,7 @@ body {
   text-align: end;
   color: black;
   font-size: 96px;
+  word-break: break-all;
 }
 
 .calculator {
