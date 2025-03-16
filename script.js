@@ -62,7 +62,13 @@ document
       btnValue != "%"
     ) {
       //add target button's value to currentOperation until clicking the equals (=)
-      currentOperation += btnValue.toString();
+      const operators = /[+-/*]/;
+      console.log(currentOperation);
+      operators.test(currentOperation[currentOperation.length - 1]) &&
+      operators.test(btnValue)
+        ? alert("You can't enter another operator!")
+        : (currentOperation += btnValue.toString());
+
       displayResult(currentOperation);
     } else if (btnValue === "equals") {
       currentOperation = calculate(currentOperation);
