@@ -14,6 +14,7 @@ const clearHistoryBtn = document.querySelector("#clear-history-btn");
 
 historyButton.addEventListener("click", () => {
   console.log(historyButtonIcon);
+
   if (history.classList.contains("show")) {
     // hide history, show calculator
     history.classList.remove("show");
@@ -29,13 +30,6 @@ historyButton.addEventListener("click", () => {
 
   fetchList();
   operationsList = [];
-});
-
-//clear local storage
-clearHistoryBtn.addEventListener("click", () => {
-  console.log(localStorage.key);
-  localStorage.clear();
-  previousOperationsList.innerHTML = "";
 });
 
 //1. listen for click on parent, instead of each button child
