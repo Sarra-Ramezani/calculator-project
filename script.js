@@ -111,7 +111,7 @@ function calculate(currentOperation) {
     }
     //add current operation to list
     currentOperation += `=${result}`;
-    createOperationList(currentOperation);
+    postOperation(currentOperation);
 
     //to continue the opertaion, we set result to currentOperation
     currentOperation = Number(result);
@@ -227,16 +227,47 @@ function checkZeroDivision(operation) {
 }
 
 //get the whole operation each time and store it in a list and display the list
-function createOperationList(operation) {
-  operationsList = JSON.parse(localStorage.getItem("operation")) || [];
-  operationsList.push(operation);
-  localStorage.setItem("operation", JSON.stringify(operationsList));
-  return operationsList;
+function postOperation(operation) {
+  const data = {
+    expression: operation,
+  };
+
+  fetch(
+    "https://tt0-sincere-einstein.circumeo-apps.net/api/save-calculation/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
 function displayOperationHistory() {
+  fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   previousOperationsList.innerHTML = "";
-  list = JSON.parse(localStorage.getItem("operation")) || [];
+  list = JSON.parse(data) || [];
   list.forEach((element) => {
     previousOperationsList.innerHTML += `${element} <br>`;
   });
