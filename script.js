@@ -117,7 +117,7 @@ function calculate(currentOperation) {
     }
     //add current operation to list
     currentOperation += `=${result}`;
-    postOperation(currentOperation);
+    createOperationList(currentOperation);
 
     //to continue the opertaion, we set result to currentOperation
     currentOperation = Number(result);
@@ -224,48 +224,63 @@ function checkZeroDivision(operation) {
 }
 
 //get the whole operation each time and store it in a list and display the list
-function postOperation(operation) {
-  const data = {
-    expression: operation,
-  };
+// function postOperation(operation) {
+//   const data = {
+//     expression: operation,
+//   };
 
-  fetch(
-    "https://tt0-sincere-einstein.circumeo-apps.net/api/save-calculation/",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+//   fetch(
+//     "https://tt0-sincere-einstein.circumeo-apps.net/api/save-calculation/",
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(data),
+//     }
+//   )
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log("Success:", data);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// }
+
+// function displayOperationHistory() {
+//   let data = "";
+//   fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log("Success:", data);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+//   previousOperationsList.innerHTML = "";
+//   list = JSON.parse(data) || [];
+//   list.forEach((element) => {
+//     previousOperationsList.innerHTML += `${element} <br>`;
+//   });
+// }
+
+function createOperationList(operation) {
+  operationsList = JSON.parse(localStorage.getItem("operation")) || [];
+  operationsList.push(operation);
+  localStorage.setItem("operation", JSON.stringify(operationsList));
+  return operationsList;
 }
 
 function displayOperationHistory() {
-  let data = "";
-  fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
   previousOperationsList.innerHTML = "";
-  list = JSON.parse(data) || [];
+  list = JSON.parse(localStorage.getItem("operation")) || [];
   list.forEach((element) => {
     previousOperationsList.innerHTML += `${element} <br>`;
   });
