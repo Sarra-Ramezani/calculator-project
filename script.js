@@ -229,31 +229,16 @@ function postOperation(operation) {
     expression: operation,
   };
 
-  // fetch(
-  //   "https://tt0-sincere-einstein.circumeo-apps.net/api/save-calculation/",
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   }
-  // )
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log("Success:", data);
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //   });
-
-  fetch("https://0xr-skillful-mendel.circumeo-apps.net/api/save-calculation/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  }).catch((error) => {
+  fetch(
+    "https://vu6-passionate-cavendish.circumeo-apps.net/api/save-calculation/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  ).catch((error) => {
     console.error("Error:", error);
   });
 }
@@ -261,7 +246,7 @@ function postOperation(operation) {
 async function getHistoryList() {
   try {
     const response = await fetch(
-      "https://0xr-skillful-mendel.circumeo-apps.net/api/history/",
+      "https://vu6-passionate-cavendish.circumeo-apps.net/api/history/",
       {
         method: "GET",
         headers: {
@@ -287,47 +272,8 @@ async function fetchList() {
     const list = await getHistoryList();
     previousOperationsList.innerHTML = "";
     console.log("Listttt:", list);
-    // list = JSON.parse(data) || [];
-    // list.forEach((element) => {
-    //   previousOperationsList.innerHTML += `${element} <br>`;
-    // });
+    list.forEach((element) => {
+      previousOperationsList.innerHTML += `${element.expression} <br>`;
+    });
   } catch (error) {}
 }
-
-// function displayOperationHistory() {
-//   let data = "";
-//   fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log("Success:", data);
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-//   previousOperationsList.innerHTML = "";
-//   list = JSON.parse(data) || [];
-//   list.forEach((element) => {
-//     previousOperationsList.innerHTML += `${element} <br>`;
-//   });
-// }
-//---------------------------
-// function createOperationList(operation) {
-//   operationsList = JSON.parse(localStorage.getItem("operation")) || [];
-//   operationsList.push(operation);
-//   localStorage.setItem("operation", JSON.stringify(operationsList));
-//   return operationsList;
-// }
-
-// function displayOperationHistory() {
-//   previousOperationsList.innerHTML = "";
-//   list = JSON.parse(localStorage.getItem("operation")) || [];
-//   list.forEach((element) => {
-//     previousOperationsList.innerHTML += `${element} <br>`;
-//   });
-// }

@@ -53,6 +53,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-left: 13%;
+  position: relative;
+  z-index: 15;
 }
 
 #history-btn > img {
@@ -128,8 +130,8 @@ body {
   text-align: end;
   color: black;
   font-size: 96px;
-  word-break: break-all;
 }
+
 .calculator {
   opacity: 1;
   transition: opacity 0.5s ease;
