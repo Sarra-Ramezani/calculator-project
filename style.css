@@ -52,7 +52,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 80px;
   margin-left: 13%;
 }
 
@@ -104,6 +103,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: 600px;
+  overflow-y: scroll;
 }
 
 #clear-history-btn {

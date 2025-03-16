@@ -123,7 +123,14 @@ function calculate(currentOperation) {
 
 function clear(currentOperation) {
   //remove the last item of currentOperation
-  currentOperation = currentOperation.slice(0, -1);
+
+  console.log(currentOperation);
+  console.log(currentOperation.length);
+  currentOperation = String(currentOperation).substring(
+    0,
+    String(currentOperation).length - 1
+  );
+
   //check if currentOperation is empty, show 0 as result
   currentOperation.length === 0
     ? displayResult(0)
@@ -154,43 +161,27 @@ function addDecimalPoint(currentOperation) {
 }
 
 function convertToNegative(currentOperation) {
-  lastOperand = getLastOperand(currentOperation);
+  lastOperand = String(getLastOperand(currentOperation));
   //replace the last operand with converted negative operand
-  console.log(lastOperand);
-  const regex = /[0-9.%]+/;
-  //check if it's an operation or it's just a number
-  if (regex.test(currentOperation) || currentOperation[0] === "-") {
-    //if it's just a number, convert it to negative
-    currentOperation = `(-${currentOperation})`;
-  } else {
-    //if it's an operation, replace last operand with negative one
-    currentOperation =
-      currentOperation.substring(0, currentOperation.lastIndexOf(lastOperand)) +
-      `(-${lastOperand})`;
-  }
+  currentOperation =
+    String(currentOperation).substring(
+      0,
+      String(currentOperation).length - lastOperand.length
+    ) + `-(${lastOperand})`;
+
   displayResult(currentOperation);
   return currentOperation;
 }
 
 function percentageCalculator(currentOperation) {
-  lastOperand = getLastOperand(currentOperation);
-  //replace the last operand with operand*0.01
-  // currentOperation =
-  //   currentOperation.substring(
-  //     0,
-  //     currentOperation.lastIndexOf(lastOperand)
-  //   ) + `${lastOperand * 0.01}`;
-  const regex = /[^0-9.%]+/;
-  //check if it's an operation or it's just a number
-  if (regex.test(currentOperation) || currentOperation[0] === "-") {
-    //if it's just a number, convert it to negative
-    currentOperation = `${currentOperation * 0.01}`;
-  } else {
-    //if it's an operation, replace last operand with negative one
-    currentOperation =
-      currentOperation.substring(0, currentOperation.lastIndexOf(lastOperand)) +
-      `${lastOperand * 0.01}`;
-  }
+  lastOperand = String(getLastOperand(currentOperation));
+  //replace the last operand with operand * 0.01
+  currentOperation =
+    String(currentOperation).substring(
+      0,
+      String(currentOperation).length - lastOperand.length
+    ) + `${lastOperand * 0.01}`;
+
   displayResult(currentOperation);
   return currentOperation;
 }
@@ -252,6 +243,7 @@ function postOperation(operation) {
 }
 
 function displayOperationHistory() {
+  let data = "";
   fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
     method: "GET",
     headers: {
