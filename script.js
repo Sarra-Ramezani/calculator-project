@@ -173,7 +173,7 @@ function convertToNegative(currentOperation) {
     String(currentOperation).substring(
       0,
       String(currentOperation).length - lastOperand.length
-    ) + `-(${lastOperand})`;
+    ) + `(-${lastOperand})`;
 
   displayResult(currentOperation);
   return currentOperation;
