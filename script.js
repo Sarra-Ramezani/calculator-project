@@ -247,16 +247,13 @@ function postOperation(operation) {
   //     console.error("Error:", error);
   //   });
 
-  fetch(
-    "https://x3v-discerning-feynman.circumeo-apps.net/api/save-calculation/",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  ).catch((error) => {
+  fetch("https://0xr-skillful-mendel.circumeo-apps.net/api/save-calculation/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).catch((error) => {
     console.error("Error:", error);
   });
 }
@@ -264,7 +261,7 @@ function postOperation(operation) {
 async function getHistoryList() {
   try {
     const response = await fetch(
-      "https://x3v-discerning-feynman.circumeo-apps.net/api/history/",
+      "https://0xr-skillful-mendel.circumeo-apps.net/api/history/",
       {
         method: "GET",
         headers: {
@@ -278,7 +275,7 @@ async function getHistoryList() {
     }
 
     const listData = await response.json();
-    return listData; // Returns the list from backend
+    return listData;
   } catch (error) {
     console.error("Error fetching list:", error);
     throw error;
@@ -288,7 +285,12 @@ async function getHistoryList() {
 async function fetchList() {
   try {
     const list = await getHistoryList();
-    console.log("Received list:", list);
+    previousOperationsList.innerHTML = "";
+    console.log("Listttt:", list);
+    // list = JSON.parse(data) || [];
+    // list.forEach((element) => {
+    //   previousOperationsList.innerHTML += `${element} <br>`;
+    // });
   } catch (error) {}
 }
 
