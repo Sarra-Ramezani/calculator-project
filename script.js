@@ -27,7 +27,7 @@ historyButton.addEventListener("click", () => {
     historyButtonIcon.classList.add("rotating-icon");
   }
 
-  displayOperationHistory();
+  fetchList();
   operationsList = [];
 });
 
@@ -248,7 +248,7 @@ function postOperation(operation) {
   //   });
 
   fetch(
-    "https://tt0-sincere-einstein.circumeo-apps.net/api/save-calculation/",
+    "https://x3v-discerning-feynman.circumeo-apps.net/api/save-calculation/",
     {
       method: "POST",
       headers: {
@@ -261,29 +261,60 @@ function postOperation(operation) {
   });
 }
 
-function displayOperationHistory() {
-  let data = "";
-  fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-  previousOperationsList.innerHTML = "";
-  list = JSON.parse(data) || [];
-  list.forEach((element) => {
-    previousOperationsList.innerHTML += `${element} <br>`;
-  });
+async function getHistoryList() {
+  try {
+    const response = await fetch(
+      "https://x3v-discerning-feynman.circumeo-apps.net/api/history/",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const listData = await response.json();
+    return listData; // Returns the list from backend
+  } catch (error) {
+    console.error("Error fetching list:", error);
+    throw error;
+  }
 }
 
+async function fetchList() {
+  try {
+    const list = await getHistoryList();
+    console.log("Received list:", list);
+  } catch (error) {}
+}
+
+// function displayOperationHistory() {
+//   let data = "";
+//   fetch("https://tt0-sincere-einstein.circumeo-apps.net/api/history/", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log("Success:", data);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+//   previousOperationsList.innerHTML = "";
+//   list = JSON.parse(data) || [];
+//   list.forEach((element) => {
+//     previousOperationsList.innerHTML += `${element} <br>`;
+//   });
+// }
+//---------------------------
 // function createOperationList(operation) {
 //   operationsList = JSON.parse(localStorage.getItem("operation")) || [];
 //   operationsList.push(operation);
